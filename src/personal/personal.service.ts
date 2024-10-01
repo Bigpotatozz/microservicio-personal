@@ -22,6 +22,17 @@ export class PersonalService {
                                                   area: createPersonalDto.area
       })
 
+      const usuario_personal = await fetch('http://localhost:3001/usuario/crearUsuario',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({nombre: createPersonalDto.nombre, 
+                              email: createPersonalDto.email,
+                            contrasenia: createPersonalDto.curp,
+                            rol: createPersonalDto.area}),
+      });
+
       return {message: 'Personal creado', personal: personal};
 
     }catch(error){
